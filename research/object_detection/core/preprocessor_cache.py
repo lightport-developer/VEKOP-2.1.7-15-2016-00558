@@ -22,7 +22,7 @@ PreprocessorCache object, that function will perform the same augmentation
 on all calls.
 """
 
-import collections
+from collections import defaultdict
 
 
 class PreprocessorCache(object):
@@ -57,7 +57,6 @@ class PreprocessorCache(object):
   JPEG_QUALITY = 'jpeg_quality'
   DOWNSCALE_TO_TARGET_PIXELS = 'downscale_to_target_pixels'
   PATCH_GAUSSIAN = 'patch_gaussian'
-  SQUARE_CROP_BY_SCALE = 'square_crop_scale'
 
   # 27 permitted function ids
   _VALID_FNS = [ROTATION90, HORIZONTAL_FLIP, VERTICAL_FLIP, PIXEL_VALUE_SCALE,
@@ -67,15 +66,14 @@ class PreprocessorCache(object):
                 PAD_TO_ASPECT_RATIO, BLACK_PATCHES, ADD_BLACK_PATCH, SELECTOR,
                 SELECTOR_TUPLES, SELF_CONCAT_IMAGE, SSD_CROP_SELECTOR_ID,
                 SSD_CROP_PAD_SELECTOR_ID, JPEG_QUALITY,
-                DOWNSCALE_TO_TARGET_PIXELS, PATCH_GAUSSIAN,
-                SQUARE_CROP_BY_SCALE]
+                DOWNSCALE_TO_TARGET_PIXELS, PATCH_GAUSSIAN]
 
   def __init__(self):
-    self._history = collections.defaultdict(dict)
+    self._history = defaultdict(dict)
 
   def clear(self):
     """Resets cache."""
-    self._history = collections.defaultdict(dict)
+    self._history = defaultdict(dict)
 
   def get(self, function_id, key):
     """Gets stored value given a function id and key.

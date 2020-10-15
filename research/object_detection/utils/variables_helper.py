@@ -23,10 +23,11 @@ from __future__ import print_function
 import logging
 import re
 
-import tensorflow.compat.v1 as tf
-import tf_slim as slim
+import tensorflow as tf
 
 from tensorflow.python.ops import variables as tf_variables
+
+slim = tf.contrib.slim
 
 
 # TODO(derekjchow): Consider replacing with tf.contrib.filter_variables in

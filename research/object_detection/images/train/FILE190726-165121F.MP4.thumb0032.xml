@@ -1,0 +1,26 @@
+<annotation>
+	<folder>priority_road</folder>
+	<filename>FILE190726-165121F.MP4.thumb0032.jpg</filename>
+	<path>/home/mi/road_sign_detection/Data/Road_signs/priority_road/FILE190726-165121F.MP4.thumb0032.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>priority_road</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1565</xmin>
+			<ymin>481</ymin>
+			<xmax>1632</xmax>
+			<ymax>557</ymax>
+		</bndbox>
+	</object>
+</annotation>

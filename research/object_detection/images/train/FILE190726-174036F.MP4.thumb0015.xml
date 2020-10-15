@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>FILE190726-174036F.MP4.thumb0015.jpg</filename>
+	<path>/home/mi/road_sign_detection/object_detection/images/train/FILE190726-174036F.MP4.thumb0015.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>pedestrian_crossing</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>969</xmin>
+			<ymin>575</ymin>
+			<xmax>1005</xmax>
+			<ymax>610</ymax>
+		</bndbox>
+	</object>
+</annotation>

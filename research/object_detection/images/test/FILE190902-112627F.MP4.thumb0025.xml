@@ -1,0 +1,26 @@
+<annotation>
+	<folder>no_overtaking</folder>
+	<filename>FILE190902-112627F.MP4.thumb0025.jpg</filename>
+	<path>/home/mi/road_sign_detection/Data/Road_signs/no_overtaking/FILE190902-112627F.MP4.thumb0025.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>no_overtaking</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>715</xmin>
+			<ymin>562</ymin>
+			<xmax>813</xmax>
+			<ymax>654</ymax>
+		</bndbox>
+	</object>
+</annotation>

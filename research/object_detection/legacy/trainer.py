@@ -21,8 +21,7 @@ DetectionModel.
 
 import functools
 
-import tensorflow.compat.v1 as tf
-import tf_slim as slim
+import tensorflow as tf
 
 from object_detection.builders import optimizer_builder
 from object_detection.builders import preprocessor_builder
@@ -32,6 +31,8 @@ from object_detection.core import standard_fields as fields
 from object_detection.utils import ops as util_ops
 from object_detection.utils import variables_helper
 from deployment import model_deploy
+
+slim = tf.contrib.slim
 
 
 def create_input_queue(batch_size_per_clone, create_tensor_dict_fn,
@@ -61,7 +62,7 @@ def create_input_queue(batch_size_per_clone, create_tensor_dict_fn,
       tensor_dict[fields.InputDataFields.image], 0)
 
   images = tensor_dict[fields.InputDataFields.image]
-  float_images = tf.cast(images, dtype=tf.float32)
+  float_images = tf.to_float(images)
   tensor_dict[fields.InputDataFields.image] = float_images
 
   include_instance_masks = (fields.InputDataFields.groundtruth_instance_masks
@@ -74,7 +75,6 @@ def create_input_queue(batch_size_per_clone, create_tensor_dict_fn,
     tensor_dict = preprocessor.preprocess(
         tensor_dict, data_augmentation_options,
         func_arg_map=preprocessor.get_default_func_arg_map(
-            include_label_weights=True,
             include_multiclass_scores=include_multiclass_scores,
             include_instance_masks=include_instance_masks,
             include_keypoints=include_keypoints))
@@ -367,8 +367,11 @@ def train(create_tensor_dict_fn,
     summary_op = tf.summary.merge(list(summaries), name='summary_op')
 
     # Soft placement allows placing on CPU ops without GPU implementation.
+    gpu_op = tf.GPUOptions(per_process_gpu_memory_fraction=0.8)
     session_config = tf.ConfigProto(allow_soft_placement=True,
-                                    log_device_placement=False)
+                                    log_device_placement=False,
+                                    gpu_options=gpu_op)
+    #session_config.gpu_options.per_process_gpu_memory_fraction = 0.8
 
     # Save checkpoints regularly.
     keep_checkpoint_every_n_hours = train_config.keep_checkpoint_every_n_hours

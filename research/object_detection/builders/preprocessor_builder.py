@@ -15,7 +15,7 @@
 
 """Builder for preprocessing steps."""
 
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 from object_detection.core import preprocessor
 from object_detection.protos import preprocessor_pb2
@@ -150,8 +150,7 @@ def build(preprocessor_step_config):
     return (preprocessor.random_horizontal_flip,
             {
                 'keypoint_flip_permutation': tuple(
-                    config.keypoint_flip_permutation) or None,
-                'probability': config.probability or None,
+                    config.keypoint_flip_permutation),
             })
 
   if step_type == 'random_vertical_flip':
@@ -159,18 +158,11 @@ def build(preprocessor_step_config):
     return (preprocessor.random_vertical_flip,
             {
                 'keypoint_flip_permutation': tuple(
-                    config.keypoint_flip_permutation) or None,
-                'probability': config.probability or None,
+                    config.keypoint_flip_permutation),
             })
 
   if step_type == 'random_rotation90':
-    config = preprocessor_step_config.random_rotation90
-    return (preprocessor.random_rotation90,
-            {
-                'keypoint_rot_permutation': tuple(
-                    config.keypoint_rot_permutation) or None,
-                'probability': config.probability or None,
-            })
+    return (preprocessor.random_rotation90, {})
 
   if step_type == 'random_crop_image':
     config = preprocessor_step_config.random_crop_image
@@ -407,22 +399,5 @@ def build(preprocessor_step_config):
       kwargs['clip_boxes'] = [op.clip_boxes for op in config.operations]
       kwargs['random_coef'] = [op.random_coef for op in config.operations]
     return (preprocessor.ssd_random_crop_pad_fixed_aspect_ratio, kwargs)
-
-  if step_type == 'random_square_crop_by_scale':
-    config = preprocessor_step_config.random_square_crop_by_scale
-    return preprocessor.random_square_crop_by_scale, {
-        'scale_min': config.scale_min,
-        'scale_max': config.scale_max,
-        'max_border': config.max_border,
-        'num_scales': config.num_scales
-    }
-
-  if step_type == 'random_scale_crop_and_pad_to_square':
-    config = preprocessor_step_config.random_scale_crop_and_pad_to_square
-    return preprocessor.random_scale_crop_and_pad_to_square, {
-        'scale_min': config.scale_min,
-        'scale_max': config.scale_max,
-        'output_size': config.output_size,
-    }
 
   raise ValueError('Unknown preprocessing step.')

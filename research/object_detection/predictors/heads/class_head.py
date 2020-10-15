@@ -20,10 +20,12 @@ All the class prediction heads have a predict function that receives the
 `features` as the first argument and returns class predictions with background.
 """
 import functools
-import tensorflow.compat.v1 as tf
-import tf_slim as slim
+import tensorflow as tf
+from tensorflow.contrib import slim as contrib_slim
 
 from object_detection.predictors.heads import head
+
+slim = contrib_slim
 
 
 class MaskRCNNClassHead(head.Head):
@@ -96,7 +98,6 @@ class MaskRCNNClassHead(head.Head):
       class_predictions_with_background = slim.fully_connected(
           flattened_roi_pooled_features,
           self._num_class_slots,
-          reuse=tf.AUTO_REUSE,
           activation_fn=None,
           scope=self._scope)
     class_predictions_with_background = tf.reshape(

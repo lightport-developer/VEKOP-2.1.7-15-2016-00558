@@ -1,0 +1,46 @@
+item {
+ id: 1
+ name: 'speed_limit_40'
+}
+
+item {
+ id: 2
+ name: 'speed_limit_60'
+}
+
+item {
+ id: 3
+ name: 'speed_limit_70'
+}
+
+item {
+ id: 4
+ name: 'no_overtaking'
+}
+
+item {
+ id: 5
+ name: 'no_parking'
+}
+
+item {
+ id: 6
+ name: 'pedestrian_crossing'
+}
+
+item {
+ id: 7
+ name: 'priority_road'
+}
+
+item {
+ id: 8
+ name: 'warning'
+}
+
+
+
+
+
+
+

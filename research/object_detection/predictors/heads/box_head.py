@@ -20,10 +20,12 @@ All the box prediction heads have a predict function that receives the
 `features` as the first argument and returns `box_encodings`.
 """
 import functools
-import tensorflow.compat.v1 as tf
-import tf_slim as slim
+import tensorflow as tf
+from tensorflow.contrib import slim as contrib_slim
 
 from object_detection.predictors.heads import head
+
+slim = contrib_slim
 
 
 class MaskRCNNBoxHead(head.Head):
@@ -105,7 +107,6 @@ class MaskRCNNBoxHead(head.Head):
       box_encodings = slim.fully_connected(
           flattened_roi_pooled_features,
           number_of_boxes * self._box_code_size,
-          reuse=tf.AUTO_REUSE,
           activation_fn=None,
           scope='BoxEncodingPredictor')
     box_encodings = tf.reshape(box_encodings,

@@ -21,13 +21,12 @@ from __future__ import print_function
 
 from absl.testing import parameterized
 import numpy as np
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 from object_detection.utils import patch_ops
-from object_detection.utils import test_case
 
 
-class GetPatchMaskTest(test_case.TestCase, parameterized.TestCase):
+class GetPatchMaskTest(tf.test.TestCase, parameterized.TestCase):
 
   def testMaskShape(self):
     image_shape = [15, 10]
@@ -109,17 +108,13 @@ class GetPatchMaskTest(test_case.TestCase, parameterized.TestCase):
       patch_ops.get_patch_mask(y, x, patch_size=3, image_shape=image_shape)
 
   def testDynamicCoordinatesOutsideImageRaisesError(self):
-
-    def graph_fn():
-      image_shape = [15, 10]
-      x = tf.random_uniform([], minval=-2, maxval=-1, dtype=tf.int32)
-      y = tf.random_uniform([], minval=0, maxval=1, dtype=tf.int32)
-      mask = patch_ops.get_patch_mask(
-          y, x, patch_size=3, image_shape=image_shape)
-      return mask
-
+    image_shape = [15, 10]
+    x = tf.random_uniform([], minval=-2, maxval=-1, dtype=tf.int32)
+    y = tf.random_uniform([], minval=0, maxval=1, dtype=tf.int32)
+    mask = patch_ops.get_patch_mask(
+        y, x, patch_size=3, image_shape=image_shape)
     with self.assertRaises(tf.errors.InvalidArgumentError):
-      self.execute(graph_fn, [])
+      self.evaluate(mask)
 
   @parameterized.parameters(
       {'patch_size': 0},
@@ -132,17 +127,12 @@ class GetPatchMaskTest(test_case.TestCase, parameterized.TestCase):
           0, 0, patch_size=patch_size, image_shape=image_shape)
 
   def testDynamicNonPositivePatchSizeRaisesError(self):
-
-    def graph_fn():
-      image_shape = [6, 7]
-      patch_size = -1 * tf.random_uniform([], minval=0, maxval=3,
-                                          dtype=tf.int32)
-      mask = patch_ops.get_patch_mask(
-          0, 0, patch_size=patch_size, image_shape=image_shape)
-      return mask
-
+    image_shape = [6, 7]
+    patch_size = -1 * tf.random_uniform([], minval=0, maxval=3, dtype=tf.int32)
+    mask = patch_ops.get_patch_mask(
+        0, 0, patch_size=patch_size, image_shape=image_shape)
     with self.assertRaises(tf.errors.InvalidArgumentError):
-      self.execute(graph_fn, [])
+      self.evaluate(mask)
 
 
 if __name__ == '__main__':

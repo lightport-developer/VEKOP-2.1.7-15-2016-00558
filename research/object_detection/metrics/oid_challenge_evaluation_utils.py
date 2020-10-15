@@ -136,15 +136,15 @@ def build_groundtruth_dictionary(data, class_label_map):
 
   dictionary = {
       standard_fields.InputDataFields.groundtruth_boxes:
-          data_location[['YMin', 'XMin', 'YMax', 'XMax']].to_numpy(),
+          data_location[['YMin', 'XMin', 'YMax', 'XMax']].as_matrix(),
       standard_fields.InputDataFields.groundtruth_classes:
           data_location['LabelName'].map(lambda x: class_label_map[x]
-                                        ).to_numpy(),
+                                        ).as_matrix(),
       standard_fields.InputDataFields.groundtruth_group_of:
-          data_location['IsGroupOf'].to_numpy().astype(int),
+          data_location['IsGroupOf'].as_matrix().astype(int),
       standard_fields.InputDataFields.groundtruth_image_classes:
           data_labels['LabelName'].map(lambda x: class_label_map[x]
-                                      ).to_numpy(),
+                                      ).as_matrix(),
   }
 
   if 'Mask' in data_location:
@@ -179,9 +179,9 @@ def build_predictions_dictionary(data, class_label_map):
   """
   dictionary = {
       standard_fields.DetectionResultFields.detection_classes:
-          data['LabelName'].map(lambda x: class_label_map[x]).to_numpy(),
+          data['LabelName'].map(lambda x: class_label_map[x]).as_matrix(),
       standard_fields.DetectionResultFields.detection_scores:
-          data['Score'].to_numpy()
+          data['Score'].as_matrix()
   }
 
   if 'Mask' in data:
@@ -192,6 +192,6 @@ def build_predictions_dictionary(data, class_label_map):
   else:
     dictionary[standard_fields.DetectionResultFields.detection_boxes] = data[[
         'YMin', 'XMin', 'YMax', 'XMax'
-    ]].to_numpy()
+    ]].as_matrix()
 
   return dictionary

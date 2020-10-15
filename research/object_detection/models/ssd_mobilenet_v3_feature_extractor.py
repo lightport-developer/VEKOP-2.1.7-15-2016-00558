@@ -14,8 +14,8 @@
 # ==============================================================================
 """SSDFeatureExtractor for MobileNetV3 features."""
 
-import tensorflow.compat.v1 as tf
-import tf_slim as slim
+import tensorflow as tf
+from tensorflow.contrib import slim as contrib_slim
 
 from object_detection.meta_architectures import ssd_meta_arch
 from object_detection.models import feature_map_generators
@@ -24,6 +24,8 @@ from object_detection.utils import ops
 from object_detection.utils import shape_utils
 from nets.mobilenet import mobilenet
 from nets.mobilenet import mobilenet_v3
+
+slim = contrib_slim
 
 
 class SSDMobileNetV3FeatureExtractorBase(ssd_meta_arch.SSDFeatureExtractor):
@@ -155,7 +157,7 @@ class SSDMobileNetV3FeatureExtractorBase(ssd_meta_arch.SSDFeatureExtractor):
               insert_1x1_conv=True,
               image_features=image_features)
 
-    return list(feature_maps.values())
+    return feature_maps.values()
 
 
 class SSDMobileNetV3LargeFeatureExtractor(SSDMobileNetV3FeatureExtractorBase):

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>no_parking</folder>
+	<filename>FILE190713-090305F.shrink.mp4.thumb0043.jpg</filename>
+	<path>/home/mi/road_sign_detection/Data/Road_signs/no_parking/FILE190713-090305F.shrink.mp4.thumb0043.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>no_parking</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>761</xmin>
+			<ymin>27</ymin>
+			<xmax>802</xmax>
+			<ymax>67</ymax>
+		</bndbox>
+	</object>
+</annotation>

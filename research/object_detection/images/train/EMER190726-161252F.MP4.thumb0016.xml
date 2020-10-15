@@ -1,0 +1,26 @@
+<annotation>
+	<folder>40</folder>
+	<filename>EMER190726-161252F.MP4.thumb0016.jpg</filename>
+	<path>/home/mi/Current/Data/Road_signs/40/EMER190726-161252F.MP4.thumb0016.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1920</width>
+		<height>1080</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>speed_limit_40</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>239</xmin>
+			<ymin>485</ymin>
+			<xmax>302</xmax>
+			<ymax>554</ymax>
+		</bndbox>
+	</object>
+</annotation>
