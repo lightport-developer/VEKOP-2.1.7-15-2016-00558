@@ -36,7 +36,7 @@ A projekthez a [faster_rcnn_inception_v2_coco_2018_01_28](https://github.com/lig
 | Előzni tilos | no_overtaking | 40/130 | [kép](research/object_detection/images/train/FILE190713-091407F.shrink.mp4.thumb0012.jpg) | [kép](research/object_detection/InferredImages/FILE190726-161127F.MP4.thumb0057.jpg.infer.jpg) |
 | Parkolni tilos | no_parking | 27/90 | [kép](research/object_detection/images/train/FILE190712-091116F.shrink.mp4.thumb0015.jpg) | [kép](research/object_detection/InferredImages/FILE190713-120332F.shrink.mp4.thumb0010.jpg.infer.jpg) |
 | Gyalogos átkelő | pedestrian_crossing | 26/95 | [kép](research/object_detection/images/train/FILE190726-170026F.MP4.thumb0045.jpg) | [kép](research/object_detection/InferredImages/FILE190903-123157F.MP4.thumb0019.jpg.infer.jpg) |
-| Főútvonal | priority_road | 36/137 | [kép](research/object_detection/images/train/FILE190713-094119F.shrink.mp4.thumb0012.jpg) | [kép](hresearch/object_detection/InferredImages/FILE190903-123157F.MP4.thumb0019.jpg.infer.jpg) |
+| Főútvonal | priority_road | 36/137 | [kép](research/object_detection/images/train/FILE190713-094119F.shrink.mp4.thumb0012.jpg) | [kép](research/object_detection/InferredImages/FILE190903-123157F.MP4.thumb0019.jpg.infer.jpg) |
 | Figyelmeztető tábla | warning | 35/141 | [kép](research/object_detection/images/train/FILE190712-091718F.shrink.mp4.thumb0013.jpg) | [kép](research/object_detection/InferredImages/FILE190713-094220F.shrink.mp4.thumb0015.jpg.infer.jpg) |
 
 
