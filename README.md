@@ -1,18 +1,44 @@
-![Logo](https://lightport.hu/img/logo_lp.png
+![Logo](https://lightport.hu/img/logo_lp.png)
 
 # VEKOP-2.1.7-15-2016-00558 azonosítójú projek
 
-The TensorFlow Model Garden is a repository with a number of different implementations of state-of-the-art (SOTA) models and modeling solutions for TensorFlow users. We aim to demonstrate the best practices for modeling so that TensorFlow users
-can take full advantage of TensorFlow for their research and product development.
+A projekt célja egy könnyen üzembe helyezhető és integráltható, költséghatékony, környezettudatos szempontokat figyelembe vevő – közúti adatgyűjtő prototípus gép fejlesztése, közúti, közterületi létesítmény elemek rendszeres ellenőrzésének és automatizált feladatkiosztáson alapuló karbantartásának támogatása.
 
-| Directory | Description |
+## Technikai információk
+
+### Szofver követelmény
+
+| Eszkösz | Verziószám |
 |-----------|-------------|
-| [official](official) | • A collection of example implementations for SOTA models using the latest TensorFlow 2's high-level APIs<br />• Officially maintained, supported, and kept up to date with the latest TensorFlow 2 APIs by TensorFlow<br />• Reasonably optimized for fast performance while still being easy to read |
-| [research](research) | • A collection of research model implementations in TensorFlow 1 or 2 by researchers<br />• Maintained and supported by researchers |
-| [community](community) | • A curated list of the GitHub repositories with machine learning models and implementations powered by TensorFlow 2 |
-| [orbit](orbit) | • A flexible and lightweight library that users can easily use or fork when writing customized training loop code in TensorFlow 2.x. It seamlessly integrates with `tf.distribute` and supports running on different device types (CPU, GPU, and TPU). |
+| [Tensorflow](https://www.tensorflow.org/) | • 1.12.2 |
+| [Python](https://www.python.org/download/releases/3.0/) | • 3 |
+| [NVIDIA driver](https://www.nvidia.com/en-us/geforce/drivers/) | • 384.183|
+| [CUDA toolkit](https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal) | • 9(.0.176) |
+| [CUDNN toolkit](https://developer.nvidia.com/cudnn) | • 7.6.1|
 
-## [Announcements](https://github.com/tensorflow/models/wiki/Announcements)
+### Hardver követelmény
+| Eszkösz | Típus |
+|-----------|-------------|
+| GPU | • NVIDIA GeForce GTX 1080|
+
+
+### Felhasznált előre betanított modell
+
+A projekthez a [faster_rcnn_inception_v2_coco_2018_01_28](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/tree/master/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28) előre betanított modellt használtuk fel, amelyet tovább tanítottunk saját adatokkal.
+
+### Adathalmaz
+
+| Tábla | [Címke](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/training/labelmap.pbtxt) | Darabszám(tanítás/teszt) | Mintakép | Inferált kép |
+|-----------|-------------|-------------|-------------|-------------|
+| Sesesség korlázotás: 40 | speed_limit_40 | 25/65 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/EMER190726-161252F.MP4.thumb0006.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190712-091517F.shrink.mp4.thumb0002.jpg.infer.jpg) |
+| Sesesség korlázotás: 60 | speed_limit_60 | 30/100 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190713-090605F.shrink.mp4.thumb0028.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190726-161127F.MP4.thumb0057.jpg.infer.jpg) |
+| Sesesség korlázotás: 70 | speed_limit_70 | 25/80 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190713-105959F.shrink.mp4.thumb0003.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190726-152235F.MP4.thumb0024.jpg.infer.jpg) |
+| Előzni tilos | no_overtaking | 40/130 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190713-091407F.shrink.mp4.thumb0012.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190726-161127F.MP4.thumb0057.jpg.infer.jpg) |
+| Parkolni tilos | no_parking | 27/90 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190712-091116F.shrink.mp4.thumb0015.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190713-120332F.shrink.mp4.thumb0010.jpg.infer.jpg) |
+| Gyalogos átkelő | pedestrian_crossing | 26/95 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190726-170026F.MP4.thumb0045.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190903-123157F.MP4.thumb0019.jpg.infer.jpg) |
+| Főútvonal | priority_road | 36/137 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190713-094119F.shrink.mp4.thumb0012.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190903-123157F.MP4.thumb0019.jpg.infer.jpg) |
+| Figyelmeztető tábla | warning | 35/141 | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/images/train/FILE190712-091718F.shrink.mp4.thumb0013.jpg) | [kép](https://github.com/lightport-developer/VEKOP-2.1.7-15-2016-00558/blob/master/research/object_detection/InferredImages/FILE190713-094220F.shrink.mp4.thumb0015.jpg.infer.jpg) |
+
 
 | Date | News |
 |------|------|
