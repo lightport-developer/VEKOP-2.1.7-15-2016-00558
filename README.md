@@ -6,20 +6,20 @@ A projekt célja egy könnyen üzembe helyezhető és integráltható, költség
 
 ## Technikai információk
 
-### Szofver követelmény
+### Szoftver követelmény
 
-| Eszkösz | Verziószám |
+| Szoftver | Verziószám |
 |-----------|-------------|
-| [Tensorflow](https://www.tensorflow.org/) | • 1.12.2 |
-| [Python](https://www.python.org/download/releases/3.0/) | • 3 |
-| [NVIDIA driver](https://www.nvidia.com/en-us/geforce/drivers/) | • 384.183|
-| [CUDA toolkit](https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal) | • 9(.0.176) |
-| [CUDNN toolkit](https://developer.nvidia.com/cudnn) | • 7.6.1|
+| [Tensorflow](https://www.tensorflow.org/) | 1.12.2 |
+| [Python](https://www.python.org/download/releases/3.0/) | 3 |
+| [NVIDIA driver](https://www.nvidia.com/en-us/geforce/drivers/) | 384.183|
+| [CUDA toolkit](https://developer.nvidia.com/cuda-90-download-archive?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1604&target_type=deblocal) | 9(.0.176) |
+| [CUDNN toolkit](https://developer.nvidia.com/cudnn) | 7.6.1|
 
 ### Hardver követelmény
-| Eszkösz | Típus |
+| Eszköz | Típus |
 |-----------|-------------|
-| GPU | • NVIDIA GeForce GTX 1080|
+| GPU | NVIDIA GeForce GTX 1080|
 
 
 ### Felhasznált előre betanított modell
