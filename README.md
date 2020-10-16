@@ -1,6 +1,6 @@
 ![Logo](https://lightport.hu/img/logo_lp.png)
 
-# VEKOP-2.1.7-15-2016-00558 azonosítójú projek
+# VEKOP-2.1.7-15-2016-00558 azonosítójú projekt
 
 A projekt célja egy könnyen üzembe helyezhető és integráltható, költséghatékony, környezettudatos szempontokat figyelembe vevő – közúti adatgyűjtő prototípus gép fejlesztése, közúti, közterületi létesítmény elemek rendszeres ellenőrzésének és automatizált feladatkiosztáson alapuló karbantartásának támogatása.
 
